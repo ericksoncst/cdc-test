@@ -1,0 +1,63 @@
+{
+  "partners": [
+    {
+      "id": "1",
+      "name": "João Silva",
+      "email": "joao@bank.com",
+      "password": "123456"
+    },
+    {
+      "id": "2",
+      "name": "Maria Santos",
+      "email": "maria@bank.com",
+      "password": "123456"
+    }
+  ],
+  "clients": [
+    {
+      "id": "1",
+      "partnerId": 1,
+      "name": "Pedro Oliveira",
+      "document": "12345678901",
+      "age": 35,
+      "monthlyIncome": 5000,
+      "balance": 1000.5
+    },
+    {
+      "id": "2",
+      "partnerId": 1,
+      "name": "Ana Costa",
+      "document": "98765432100",
+      "age": 28,
+      "monthlyIncome": 3500,
+      "balance": 2750
+    },
+    {
+      "id": "3",
+      "partnerId": 1,
+      "name": "Carlos Ferreira",
+      "document": "11122233300",
+      "age": 42,
+      "monthlyIncome": 7200,
+      "balance": 1390.25
+    },
+    {
+      "id": "4",
+      "partnerId": 2,
+      "name": "Empresa ABC Ltda",
+      "document": "12345678000190",
+      "foundationDate": "15/03/2010",
+      "monthlyIncome": 25000,
+      "balance": 15000
+    },
+    {
+      "id": "5",
+      "partnerId": 2,
+      "name": "Tech Solutions EIRELI",
+      "document": "98765432000180",
+      "foundationDate": "22/08/2018",
+      "monthlyIncome": 45000,
+      "balance": 32500.75
+    }
+  ]
+}
