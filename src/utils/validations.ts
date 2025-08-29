@@ -21,3 +21,8 @@ export const formatDocument = (document: string): string => {
       .replace(/(\d{4})(\d{1,2})$/, '$1-$2');
   }
 };
+
+export const cleanDocument = (document: string): boolean => {
+  const cleanDocument = document.replace(/\D/g, '');
+  return cleanDocument.length === 11;
+};

@@ -15,20 +15,11 @@
   ],
   "clients": [
     {
-      "id": "1",
-      "partnerId": 1,
-      "name": "Pedro Oliveira",
-      "document": "12345678901",
-      "age": 35,
-      "monthlyIncome": 5000,
-      "balance": 1000.5
-    },
-    {
       "id": "2",
       "partnerId": 1,
-      "name": "Ana Costa",
+      "name": "Ana Costa X",
       "document": "98765432100",
-      "age": 28,
+      "age": 30,
       "monthlyIncome": 3500,
       "balance": 2750
     },

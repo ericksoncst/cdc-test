@@ -1,6 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ClientsPanel from '../screens/App/ClientsPanel';
+import ClientsPanel from '../screens/App/ClientsPanelScreen';
+import EditClientScreen from '../screens/App/EditClientScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,10 @@ const AppStack: React.FC = () => {
       <Stack.Screen 
         name="ClientsPanel" 
         component={ClientsPanel}
+      />
+        <Stack.Screen 
+        name="EditClient" 
+        component={EditClientScreen}
       />
     </Stack.Navigator>
   );
