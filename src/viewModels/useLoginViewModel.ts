@@ -6,8 +6,7 @@ import { LoginFormValues, loginSchema } from '../screens/Login/schema';
 import { ApiService } from '../services/api';
 
 export const useLoginViewModel = () => {
-  const { isLoading } = useAuth();
-  const { login } = ApiService;
+  const { isLoading, login } = useAuth();
 
   const {
     control,
