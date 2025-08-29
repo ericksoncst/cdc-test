@@ -14,7 +14,7 @@ import { Controller } from "react-hook-form";
 import { Client } from "../../types";
 import { useEditClientViewModel } from "../../viewModels/useEditClientViewModel";
 import Input from "../../components/input/Input";
-import { formatDocument } from "../../utils/validations";
+import { formatDocument } from "../../utils";
 import Button from "../../components/Button/Button";
 
 

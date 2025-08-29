@@ -4,7 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useClients } from "../contexts/ClientContext";
 import { Client } from "../types";
-import { cleanDocument } from "../utils/validations";
+import { cleanDocument } from "../utils";
 
 export const useEditClientViewModel = (client: Client, onSuccess: () => void) => {
   const { updateClient, isLoading } = useClients();

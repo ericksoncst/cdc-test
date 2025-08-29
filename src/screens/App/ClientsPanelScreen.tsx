@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import { useAuth } from '../../contexts/AuthContext';
 import { useClients } from '../../contexts/ClientContext';
 import { Client } from '../../types';
-import { formatCurrency, formatDocument } from '../../utils/validations';
+import { formatCurrency, formatDocument } from '../../utils';
 import Input from '../../components/input/Input';
 import Button from '../../components/Button/Button';
 
