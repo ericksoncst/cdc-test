@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ClientsPanel from '../screens/App/ClientsPanelScreen';
 import EditClientScreen from '../screens/App/EditClientScreen';
 import CreateClientScreen from '../screens/App/CreateClientScreen';
+import TransferScreen from '../screens/App/TransferScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,10 @@ const AppStack: React.FC = () => {
       <Stack.Screen 
         name="CreateClient" 
         component={CreateClientScreen}
+      />
+      <Stack.Screen 
+        name="Transfer" 
+        component={TransferScreen}
       />
     </Stack.Navigator>
   );

@@ -4,12 +4,12 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useClients } from "../contexts/ClientContext";
 import { Client } from "../types";
-import { cleanDocument } from "../utils";
+import { isCPF } from "../utils";
 
 export const useEditClientViewModel = (client: Client, onSuccess: () => void) => {
   const { updateClient, isLoading } = useClients();
 
-  const isPersonalDocument = cleanDocument(client.document);
+  const isPersonalDocument = isCPF(client.document);
 
   const schema = z.object({
     name: z

@@ -21,7 +21,7 @@
       "document": "98765432100",
       "age": 30,
       "monthlyIncome": 3500,
-      "balance": 2750
+      "balance": 3000
     },
     {
       "id": "3",
@@ -30,7 +30,7 @@
       "document": "11122233300",
       "age": 42,
       "monthlyIncome": 7200,
-      "balance": 1390.25
+      "balance": 1140.25
     },
     {
       "id": "4",
