@@ -65,7 +65,7 @@ export const LoginScreen: React.FC = () => {
         />
 
         {isLoading && (
-          <ActivityIndicator size="small" color="#007AFF" style={styles.loading} />
+          <ActivityIndicator size="small" color="#007AFF" style={styles.loading} testID="activity-indicator" />
         )}
       </View>
 

@@ -51,6 +51,7 @@ const EditClientScreen: React.FC<EditClientProps> = ({ navigation, route }) => {
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           style={styles.backButton}
+          testID="back-button"
         >
           <Icon name="arrow-left" size={24} color="#007AFF" />
         </TouchableOpacity>

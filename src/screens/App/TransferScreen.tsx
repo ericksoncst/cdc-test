@@ -53,7 +53,7 @@ function TransferScreen({ navigation }: any) {
   return (
     <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton} testID="back-button">
           <Icon name="arrow-left" size={24} color="#007AFF" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Transferência</Text>
@@ -63,14 +63,14 @@ function TransferScreen({ navigation }: any) {
       <ScrollView style={styles.content}>
         <View style={styles.form}>
           <Text style={styles.label}>Cliente de Origem *</Text>
-          <TouchableOpacity style={styles.clientSelector} onPress={() => vm.setShowFromModal(true)}>
+          <TouchableOpacity style={styles.clientSelector} onPress={() => vm.setShowFromModal(true)} testID="from-client-selector">
             <Text>
               {vm.fromClient ? vm.fromClient.name : "Selecionar cliente de origem"}
             </Text>
           </TouchableOpacity>
 
           <Text style={styles.label}>Cliente de Destino *</Text>
-          <TouchableOpacity style={styles.clientSelector} onPress={() => vm.setShowToModal(true)}>
+          <TouchableOpacity style={styles.clientSelector} onPress={() => vm.setShowToModal(true)} testID="to-client-selector">
             <Text>
               {vm.toClient ? vm.toClient.name : "Selecionar cliente de destino"}
             </Text>

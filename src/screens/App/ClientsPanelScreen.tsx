@@ -80,12 +80,14 @@ const ClientsPanel: React.FC<ClientsPanelProps> = ({ navigation }) => {
         <TouchableOpacity
           style={[styles.actionButton, styles.editButton]}
           onPress={() => navigation.navigate('EditClient', { client: item })}
+          testID="edit-button"
         >
           <Icon name="edit-2" size={16} color="#007AFF" />
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.actionButton, styles.deleteButton]}
           onPress={() => handleDeleteClient(item)}
+          testID="delete-button"
         >
           <Icon name="trash-2" size={16} color="#e74c3c" />
         </TouchableOpacity>
@@ -100,7 +102,7 @@ const ClientsPanel: React.FC<ClientsPanelProps> = ({ navigation }) => {
           <Text style={styles.headerTitle}>Meus Clientes</Text>
           <Text style={styles.headerSubtitle}>Olá, {partner?.name}</Text>
         </View>
-        <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
+        <TouchableOpacity onPress={handleLogout} style={styles.logoutButton} testID="logout-button">
           <Icon name="log-out" size={24} color="#666" />
         </TouchableOpacity>
       </View>
@@ -125,6 +127,7 @@ const ClientsPanel: React.FC<ClientsPanelProps> = ({ navigation }) => {
             keyExtractor={(item) => item.id.toString()}
             renderItem={renderClientItem}
             showsVerticalScrollIndicator={false}
+            testID="clients-list"
             refreshControl={
               <RefreshControl
                 refreshing={isLoading}

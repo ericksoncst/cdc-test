@@ -33,7 +33,7 @@ const CreateClientScreen: React.FC<CreateClientProps> = ({ navigation }) => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton} testID="back-button">
           <Icon name="arrow-left" size={24} color="#007AFF" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Novo Cliente</Text>
