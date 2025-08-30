@@ -49,15 +49,6 @@
       "foundationDate": "22/08/2018",
       "monthlyIncome": 45000,
       "balance": 32500.75
-    },
-    {
-      "id": "b167",
-      "name": "Erickson Bonit'ao",
-      "document": "39376321820",
-      "monthlyIncome": 10000,
-      "age": 35,
-      "partnerId": "1",
-      "balance": 0
     }
   ]
 }
