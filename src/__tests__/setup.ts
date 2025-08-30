@@ -54,7 +54,7 @@ jest.mock('react-native', () => {
       return React.createElement('KeyboardAvoidingView', { ...props, ref });
     }),
     ActivityIndicator: React.forwardRef((props, ref) => {
-      return React.createElement('ActivityIndicator', { ...props, ref });
+      return React.createElement('ActivityIndicator', { ...props, ref, testID: 'activity-indicator' });
     }),
     FlatList: React.forwardRef((props, ref) => {
       const { data, renderItem, keyExtractor, refreshControl, onRefresh, testID, ...rest } = props;
