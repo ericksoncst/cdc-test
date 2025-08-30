@@ -13,6 +13,7 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, disabled = false }) => 
       style={[styles.button, disabled && styles.disabled]}
       onPress={onPress}
       disabled={disabled}
+      testID="button"
     >
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>

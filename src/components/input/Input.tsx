@@ -41,7 +41,7 @@ const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="input-container">
       <MaskInput
         style={styles.input}
         value={value}
@@ -49,10 +49,15 @@ const Input: React.FC<InputProps> = ({
         mask={dynamicMask(value)}
         secureTextEntry={isPassword && !showPassword}
         placeholderTextColor="#999"
+        testID="input-field"
         {...rest}
       />
       {isPassword && (
-        <TouchableOpacity style={styles.icon} onPress={toggleShowPassword}>
+        <TouchableOpacity 
+          style={styles.icon} 
+          onPress={toggleShowPassword}
+          testID="password-toggle"
+        >
           <Icon name={showPassword ? 'eye' : 'eye-off'} size={20} color="#555" />
         </TouchableOpacity>
       )}
