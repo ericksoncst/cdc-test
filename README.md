@@ -1,97 +1,214 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# CDC Bank - Aplicativo Mobile Bancário
 
-# Getting Started
+Uma aplicação mobile React Native para parceiros financeiros gerenciarem clientes e realizarem transações bancárias.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Começando
 
-## Step 1: Start Metro
+### Pré-requisitos
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- Node.js >= 20
+- React Native CLI
+- Android Studio (para desenvolvimento Android)
+- Xcode (para desenvolvimento iOS)
+- Git
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Instalação
 
-```sh
-# Using npm
+1. Clone o repositório:
+```bash
+git clone https://github.com/ericksoncst/cdc-test
+cd cdcTest
+```
+
+2. Instale as dependências:
+```bash
+npm install
+```
+
+3. Para iOS, instale as dependências do CocoaPods:
+```bash
+cd ios && pod install && cd ..
+```
+
+### Executando o JSON Server
+
+A aplicação requer um servidor JSON local para persistência de dados. Inicie-o antes de executar o app:
+
+```bash
+# Instale o json-server globalmente (se ainda não instalado)
+npm install -g json-server
+
+# Inicie o servidor (executa na porta 3000 por padrão)
+json-server --watch db.json --host 0.0.0.0
+```
+
+O servidor JSON estará disponível em `http://localhost:3000` e fornece os seguintes endpoints:
+- `GET/POST /partners` - Autenticação de parceiros
+- `GET/POST/PUT/DELETE /clients` - Gerenciamento de clientes
+
+### Executando a Aplicação
+
+Inicie o Metro bundler:
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+Em terminais separados, execute o app na sua plataforma preferida:
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+**Android:**
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+**iOS:**
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Testes
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+Execute a suíte de testes:
+```bash
+npm test
+```
 
-## Step 3: Modify your app
+Execute testes com cobertura:
+```bash
+npm run test:coverage
+```
 
-Now that you have successfully run the app, let's make changes!
+## O Que Foi Implementado
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Baseado nos requisitos do teste técnico, as seguintes funcionalidades foram implementadas com sucesso:
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+### Requisitos Funcionais Concluídos
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+1. **Tela de Login**
+   - Validação de email e senha
+   - Requisito de senha mínima de 6 caracteres
+   - Validação de formato de email válido
+   - Persistência de sessão com AsyncStorage
+   - Navegação automática para o painel principal para usuários logados
 
-## Congratulations! :tada:
+2. **Painel de Clientes (Tela Principal)**
+   - Listagem completa de clientes com nome, documento (CPF/CNPJ) e saldo
+   - Funcionalidade de busca por nome ou documento
+   - Operações de criar, editar e excluir clientes
+   - Sincronização de dados em tempo real
 
-You've successfully run and modified your React Native App. :partying_face:
+3. **Tela de Criação de Cliente**
+   - Formulário com todos os campos obrigatórios: nome, documento, idade/data de fundação, renda mensal
+   - Validação adequada para todas as entradas
+   - Inicialização automática de saldo
 
-### Now what?
+4. **Tela de Atualização de Cliente**
+   - Edição de informações de clientes existentes
+   - Mantém integridade dos dados durante atualizações
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+5. **Transferências Financeiras**
+   - Transferências entre clientes do mesmo parceiro
+   - Validação de saldo para prevenir saques a descoberto
+   - Atualizações de saldo em tempo real após transferências
+   - Fluxo de confirmação
 
-# Troubleshooting
+### Requisitos Técnicos Concluídos
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+- **React Native com TypeScript**: Implementação completa em TypeScript
+- **React Navigation**: Navegação em stack com fluxo de autenticação adequado
+- **Context API**: Gerenciamento de estado global para autenticação e dados de clientes
+- **Axios**: Cliente HTTP para comunicação com API
+- **StyleSheet**: Estilização customizada em toda a aplicação
+- **AsyncStorage**: Persistência de sessão e armazenamento local de dados
+- **Componentes Funcionais**: Padrões modernos do React com hooks
+- **Jest + React Native Testing Library**: Cobertura abrangente de testes
 
-# Learn More
+## Arquitetura e Decisões Técnicas
 
-To learn more about React Native, take a look at the following resources:
+### Padrão de Arquitetura
+A aplicação segue uma arquitetura em camadas com clara separação de responsabilidades:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- **Camada de Apresentação**: Telas e componentes React Native
+- **Camada de Lógica de Negócio**: ViewModels usando hooks customizados
+- **Camada de Dados**: Context API para gerenciamento de estado e serviço de API para requisições HTTP
+
+### Principais Decisões Arquiteturais
+
+1. **Padrão ViewModel**: Implementação de hooks customizados como ViewModels para separar lógica de negócio dos componentes de UI, melhorando testabilidade e manutenibilidade.
+
+2. **Context API ao invés de Redux**: Escolha da Context API pela sua simplicidade e performance adequada para o escopo da aplicação. O padrão hierárquico de providers (AuthProvider > ClientProvider) previne dependências circulares.
+
+3. **Fluxo de Dados Unidirecional**: Fluxo claro de dados dos componentes de UI através dos ViewModels para os providers de Context, garantindo atualizações previsíveis de estado.
+
+4. **Validação de Formulários com Zod**: Validação baseada em schema fornece type safety e tratamento consistente de erros em todos os formulários.
+
+5. **Abstração da Camada de Serviço**: A camada de serviço da API abstrai operações HTTP e fornece uma interface limpa para operações de dados.
+
+### Estrutura do Projeto
+```
+src/
+├── components/          # Componentes UI reutilizáveis
+├── contexts/           # Gerenciamento de estado global
+├── navigation/         # Configuração de navegação
+├── screens/           # Telas da aplicação
+├── services/          # API e serviços externos
+├── types/             # Definições de tipos TypeScript
+├── utils/             # Funções utilitárias
+├── viewModels/        # Hooks de lógica de negócio
+└── __tests__/         # Arquivos de teste
+```
+
+## O Que Poderia Ser Melhorado
+
+### Para Ambiente de Produção
+
+1. **Melhorias de Segurança**
+   - Implementar autenticação adequada com JWT tokens
+   - Adicionar mecanismo de refresh token
+   - Criptografar dados sensíveis no AsyncStorage
+   - Implementar autenticação biométrica
+   - Adicionar criptografia de requisições/respostas
+
+2. **Tratamento de Erros e Experiência do Usuário**
+   - Implementar boundary global de erros
+   - Adicionar capacidades de modo offline com sincronização de dados
+   - Melhorar estados de carregamento e skeleton screens
+   - Adicionar notificações push para confirmações de transações
+   - Implementar logging e monitoramento adequado de erros (Ex: Sentry)
+
+3. **Otimizações de Performance**
+   - Adicionar React.memo para componentes custosos
+   - Implementar scroll virtual para listas grandes de clientes
+   - Adicionar otimização e cache
+   - Implementar code splitting e lazy loading
+
+4. **Gerenciamento de Dados**
+   - Substituir Context API por Redux Toolkit para estado complexo (Em um projeto grande não usaria Context API)
+   - Implementar estratégia adequada de cache (React Query/SWR)
+   - Adicionar persistência de dados com SQLite ou Realm
+   - Implementar atualizações otimistas para melhor UX
+
+5. **Testes e Qualidade**
+   - Aumentar cobertura de testes para 90%+
+   - Adicionar testes E2E com Detox
+   - Implementar integração/entrega contínua
+   - Adicionar escaneamento automatizado de segurança
+
+6. **DevOps e Monitoramento**
+   - Implementar logging adequado com logs estruturados
+   - Adicionar monitoramento de performance (Flipper, Reactotron)
+   - Configurar relatórios de crash (Crashlytics)
+   - Implementar feature flags
+
+## Credenciais de Teste
+
+Use as seguintes credenciais para testar a aplicação:
+
+**Parceiro 1:**
+- Email: joao@bank.com
+- Senha: 123456
+
+**Parceiro 2:**
+- Email: maria@bank.com
+- Senha: 123456
+
+Cada parceiro possui clientes pré-configurados para testar a funcionalidade de transferências.
